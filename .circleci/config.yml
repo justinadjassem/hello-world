@@ -6,11 +6,10 @@ commands:
     print_pipeline_id_cmd:
         description: "learning how to do commands, print pipeline_id"
         parameters:
-            to:
+            id:
               type: string
-              default: "Hello World "
         steps:
-          - run: echo << parameters.to >> on $CIRCLE_WORKFLOW_ID
+          - run: echo << parameters.id >>
 
 
 defaults: &defaults
@@ -43,7 +42,7 @@ jobs:
         - image: circleci/node:13.8.0
       steps:
         - print_pipeline_id_cmd:
-            to: "we work "
+            id: "$CIRCLE_WORKFLOW_ID"
            
   save_hello_world_output:
     docker:
