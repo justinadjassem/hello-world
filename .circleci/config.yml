@@ -37,7 +37,7 @@ jobs:
           name: "save hello world output"
           command: echo "hello world! " > output.txt
       - persist_to_workspace:
-          root: ~/
+          root: /home/circleci
           paths:
             - output.txt
 
@@ -46,8 +46,8 @@ jobs:
         - image: circleci/node:13.8.0
       steps:
         - attach_workspace:
-            at: ~/
-        - run: cat ~/output.txt
+            at: /home/circleci
+        - run: cat /output.txt
 
 
 
